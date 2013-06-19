@@ -6,7 +6,7 @@
  * Released under the MIT license.
  *
  * Date: Tue Jan 1 2013
- * 
+ *
  * Forked by Ben Bachhuber. Modified slightly
  */
 ;(function() {
@@ -651,6 +651,9 @@
 
                     // Call callback
                     options.onClick(el, $(this), clickedData.date, clickedData.data);
+
+                    // Trigger change event for form
+                    el.change();
                   });
               }
             }
