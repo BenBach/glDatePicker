@@ -6,7 +6,7 @@
  * Released under the MIT license.
  *
  * Date: Tue Jan 1 2013
- * 
+ *
  * Forked by Ben Bachhuber. Modified slightly
  */
 ;(function() {
@@ -293,7 +293,7 @@
             });
 
             resultList = newList.length ? newList : resultList;
-          };
+          }
 
           // Sort the values before returning it
           resultList.sort();
@@ -607,7 +607,11 @@
                 // Handle today or selected dates
                 if(firstDateMonth != cellDateVal.month) { cellClass += ' outday'; }
                 if(todayTime == cellDateTime) { cellClass = 'today'; cellZIndex += 50; }
-                if(options.selectedDate._time() == cellDateTime) { cellClass = 'selected'; cellZIndex += 51; }
+                if(options.selectedDate._time() == cellDateTime) {
+                  cellClass = 'selected';
+                  cellZIndex += 51;
+                  el.val(cellDate.toLocaleDateString()).change();
+                }
 
                 // Handle special dates
                 if(options.specialDates) {
@@ -651,6 +655,9 @@
 
                     // Call callback
                     options.onClick(el, $(this), clickedData.date, clickedData.data);
+
+                    // Trigger change event for form
+                    el.change();
                   });
               }
             }
