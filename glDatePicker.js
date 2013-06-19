@@ -247,6 +247,8 @@
           if(o.length) { o.options.onHide(o.calendar) ; }
         });
 
+        this.render();
+
         // Show this calendar
         this.options.onShow(this.calendar);
       },
