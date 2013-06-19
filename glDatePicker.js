@@ -160,6 +160,9 @@
     // The day of the week to start the calendar on.  0 is Sunday, 1 is Monday and so on.
     dowOffset: 0,
 
+    // Set the locale which is used for dates
+    dateLocale: "",
+
     // Callback that will trigger when the user clicks a selectable date.
     // Parameters that are passed to the callback:
     //     el : The input element the date picker is bound to
@@ -167,7 +170,7 @@
     //   date : The date associated with the cell
     //   data : Special data associated with the cell (if available, otherwise, null)
     onClick: (function(el, cell, date, data) {
-      el.val(date.toLocaleDateString());
+      el.val(date.toLocaleDateString(options.dateLocale));
     }),
 
     // Callback that will trigger when the user hovers over a selectable date.
@@ -612,7 +615,7 @@
                 if(options.selectedDate._time() == cellDateTime) {
                   cellClass = 'selected';
                   cellZIndex += 51;
-                  el.val(cellDate.toLocaleDateString()).change();
+                  el.val(cellDate.toLocaleDateString(options.dateLocale)).change();
                 }
 
                 // Handle special dates
